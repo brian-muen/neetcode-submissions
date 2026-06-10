@@ -1,0 +1,16 @@
+class Solution {
+    public int findMin(int[] nums) {
+        int lo = 0;
+        int hi = nums.length - 1;
+        int res = Math.min(nums[lo], nums[hi]);
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            res = Math.min(res, Math.min(nums[lo], nums[hi]));
+            res = Math.min(res, nums[mid]);
+            if (nums[lo] < nums[mid]) {
+                lo = mid + 1;
+            } else hi = mid - 1;
+        }
+        return res;
+    }
+}
